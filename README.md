@@ -10,7 +10,7 @@ It has been shared as a resume.
 
 ![pdf](https://github.com/KeigoKato19/figures/raw/master/puyo_uploader/pdf.png)
 This figure is Resume how to place Puyo (pdf).  
-Sharing as a resume is difficult to manage.
+Sharing as a resume is difficult to manage.
 
 
 ---
@@ -28,7 +28,7 @@ https://github.com/KeigoKato19/figures/raw/master/puyo_uploader/upload.png)
 **Feature**  
 + Create, Read, Update, Delete puyo figure
 + Chain Animation Playable
-+ Support Classification by tag
++ Support Classification by tag
 + Search by name and Tag
 + No registration and no login
 + Responsive Web Design
