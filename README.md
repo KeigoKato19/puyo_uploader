@@ -5,7 +5,7 @@ Puyo_uploader is webApprication which sharing puyo figure on rails
 # Discription
 ## Since now
 
-About placement Puyo at Game Puyo Puyo.   
+About placement Puyo at Game Puyo Puyo.   
 It has been shared as a resume. 
 
 ![pdf](https://github.com/KeigoKato19/figures/raw/master/puyo_uploader/pdf.png)
