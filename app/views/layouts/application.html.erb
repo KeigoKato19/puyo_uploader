@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ぷよぷよあぷろだ</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+</head>
+<body>
+
+
+  <!-- header -->
+
+  <nav class="bg-faded bg-primary navbar navbar-dark navbar-full" id = "header">
+    <a class="navbar-brand">
+      <span class = "fa fa-tags fa-1.5x" ></span>
+    </a>
+    <ul class="nav navbar-nav pull-right">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalAbout" >About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalChangeLog" >ChangeLog</a>
+      </li>
+
+    </ul>
+  </nav>
+
+
+<!-- main content -->
+
+<%= yield %>
+
+<!-- footer -->
+
+ <div class="bg-primary p-y-3 section">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-3">
+         <h1 class="pi-draggable pi-item">ABOUT US</h1>
+         <p>
+          <strong>created BY KeigoKato19 </strong>
+          <br>GitHub : KeigoKato19
+          <br>Qiita : KeigoKato19
+          <br>
+          <abbr title="Phone">© 2016 KeigoKato
+        </p>
+
+       </div>
+       <div class="col-md-8  col-md-offset-1">
+         <h1 class="pi-draggable pi-item" draggable="true">CONTACT</h1>
+         <form>
+           <fieldset class="form-group">
+             <label for="exampleInputEmail1">Your name</label>
+             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Your name">
+           </fieldset>
+           <fieldset class="form-group">
+             <label for="exampleInputEmail1">Email address</label>
+             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+           </fieldset>
+           <button type="submit" class="btn btn-info">Submit</button>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+
+</body>
+</html>

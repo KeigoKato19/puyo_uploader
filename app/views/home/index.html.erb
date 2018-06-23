@@ -1,0 +1,203 @@
+<html>
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="http://v4.pingendo.com/assets/bootstrap/themes/default.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body>
+
+
+  <!-- Top -->
+
+  <div class="bg-primary p-y-1 section text-xs-center" id = "top">
+    <div class="background-image background-image-fixed"></div>
+    <div class="container" style = "margin-top:65px;">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="display-4 pi-draggable pi-item">puyoUploader<%= image_tag '24th_pc-bpuyo.png', :style => "width:10%" %></h1>
+          <p class="lead pi-draggable pi-item">Puyo figure Uploader from http://1st.geocities.jp/mattulwan/puyo_simulator/ .</p>
+          <a href="#" class="btn btn-primary btn-sm m-y-1 m-y-lg" data-toggle="modal" data-target="#modalCreateForm" >create</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- modal window form -->
+  <%= render :partial => "shared/modalChangeLog" %>
+  <%= render :partial => "shared/modalAbout" %>
+
+  <div class="modal fade" id = "modalCreateForm">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Create Puyo Figure From </h4>
+        </div>
+        <div class="modal-body">
+         <div class="container">
+        <!------------------------------->
+          <%= form_tag home_path do |f| %>
+
+           <div class="form-group">
+            <label>name*</label>
+            <input type="text" name="name" class="form-control" placeholder="name: Puyo Figure">
+           </div>
+           <div class="form-group">
+            <label>URL*</label>
+            <input type="text" name="iframe" class="form-control" placeholder="URL: made by http://1st.geocities.jp/mattulwan/puyo_simulator/">
+           </div>
+           <div class="form-group">
+            <label>Tags</label>
+            <input type="text" name="Tags" class="form-control" placeholder="Tags: Puyo Figure">
+           </div>
+           <div class="form-group">
+            <label for="Discription">Description</label>
+            <textarea class="form-control" name = "description" id="" rows="3" placeholder="Description: Puyo Figure"></textarea>
+          </div>
+          <div class="form-group">
+           <label>author</label>
+           <input type="text" name="author" class="form-control" placeholder="author: your Name">
+          </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button type="submit" class="btn btn-primary">Create</button>
+           </div>
+          <% end %>
+        <!------------------------------->
+
+         </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+  <!-- fixed sidebar -->
+
+  <div class="bg-faded p-y-3 section text-xs-left">
+    <div class="container">
+      <div class="row">
+
+
+        <div class="col-md-2">
+          <!------------------------------->
+          <div class="nav nav-stacked" id="sidebar">
+            <dd>
+              <%= form_tag(root_path, method: "get") do |f| %>
+                <span><input type="text" class="" id="search-in-page" placeholder=" Search" name="tag"></span>
+              <% end %>
+              <li><a data-toggle="collapse" href="#collapse1-1">・土台</a></li>
+              <div class="collapse" id="collapse1-1">
+                <%= link_to "階段系", "/?tag=階段", { :method => "get" , :class => "" }  %><br>
+                <%= link_to "鍵系", "/?tag=鍵", { :method => "get" , :class => "" }  %><br>
+                <%= link_to "GTR系", "/?tag=GTR", { :method => "get" , :class => "" }  %><br>
+                <%= link_to "座布団系", "/?tag=座布団", { :method => "get" , :class => "" }  %><br>
+                <%= link_to "不定系", "/?tag=不定形", { :method => "get" , :class => "" }  %><br>
+              </div>
+
+              <li><a data-toggle="collapse" href="#collapse2-1">・私的定型</a></li>
+              <div class="collapse" id="collapse2-1">
+                <a href = "/?tag=逆なめくじ">逆なめくじ系</a><br>
+                <a href = "/?tag=縦宇宙">縦宇宙系</a><br>
+                <a href = "/?tag=座布団雪崩">座布団雪崩系</a><br>
+                <a href = "/?tag=リバーシブル">リバーシブル系</a><br>
+                <a href = "/?tag=第二折り兼連鎖尾">第二折り兼連鎖尾系</a><br>
+              </div>
+
+            </dd>
+          </div>
+          <!------------------------------->
+        </div>
+
+
+      <!-- main contents -->
+
+        <div class="col-md-9">
+          <!------------------------------->
+          <div class="card-columns">
+          <!------------------------------->
+          <% @puyo_figs.each do |puyo_fig|%>
+            <div class="card card-block">
+              <p class="card-text" style = "height:4em"><%=puyo_fig.description%></p>
+              <h4 class="card-title"><%=puyo_fig.name%></h4>
+              <iframe data-normal="<%=puyo_fig.iframe%>" width="128" height="270" frameborder="0" scrolling="no"></iframe>
+              <br>
+              <a class = "btn btn-primary" data-toggle="collapse" href="#<%="collepase"+puyo_fig.id.to_s%>">Tag</a>
+              <%= link_to "Delete", "home/"+puyo_fig.id.to_s, { :method => "delete" , :class => "btn btn-secondary" }  %>
+              <div class="collapse" id = "<%="collepase"+puyo_fig.id.to_s%>" style = "padding-top:1em">
+                <% puyo_fig.tag_list.each do |tag| %>
+                <%= link_to tag, "/?tag="+tag, { :method => "get" , :class => "btn btn-secondary btn-sm" }  %>
+                <% end%>
+              </div>
+            </div>
+          <% end %>
+          <!------------------------------->
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/layzr.js/2.0.2/layzr.min.js"></script>
+
+
+  <!-- lazy load script -->
+
+  <script>
+    const instance = Layzr();
+    document.addEventListener('DOMContentLoaded', function(event){
+      instance.update().check().handlers(true);
+    })
+  </script>
+
+
+  <!-- scrollable fixed sidebar script -->
+
+  <script>
+    $(function($) {
+
+      var tab = $('#sidebar'),
+      offset = tab.offset();
+      $(window).scroll(function () {
+        /*-----------------------------------------*/
+        var scrollTop = $(window).scrollTop()
+        /*-----------------------------------------*/
+        if(scrollTop+20 > offset.top) {
+          tab.addClass('fixed');
+          $('.card').removeClass('invisible');
+        } else {
+          tab.removeClass('fixed');
+        }
+        /*-----------------------------------------*/
+      });
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

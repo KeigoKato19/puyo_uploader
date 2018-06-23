@@ -1,0 +1,33 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@media (min-width: 767px) {
+  .fixed {
+
+  }
+  #sidebar {
+
+  }
+}
+
+  .fixed {
+    position:fixed;
+    top:0px;
+  }
+
+  #sidebar {
+    margin-top:20px;
+    z-index: 10;
+  }
+
+  #search-in-page{
+      width:110px;
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+}
