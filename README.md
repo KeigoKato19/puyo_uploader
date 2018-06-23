@@ -8,15 +8,16 @@ Puyo_uploader is webApprication which sharing puyo figure on rails
 About placement Puyo at Game Puyo Puyo.   
 It has been shared as a resume. 
 
-![pdf](https://github.com/KeigoKato19/figures/raw/master/puyo_uploader/pdf.png)
-This figure is Resume how to place Puyo (pdf).  
+![pdf](https://github.com/KeigoKato19/figures/raw/master/puyo_uploader/pdf.png)  
+
+This figure is Resume how to place Puyo (pdf).  
 Sharing as a resume is difficult to manage.
 
 
 ---
 
 
-## from now  
+## From now  
 I developed webApprication which sharing puyo figure on rails.
 
 ![main](
